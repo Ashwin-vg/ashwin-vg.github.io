@@ -1,0 +1,204 @@
+/* GLOBAL */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+/* NAVBAR */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(15, 23, 42, 0.9);
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+nav h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #e2e8f0;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #38bdf8;
+}
+
+/* HERO */
+
+.hero {
+    text-align: center;
+    padding: 140px 20px;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    .hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: #38bdf8;
+    filter: blur(200px);
+    opacity: 0.15;
+    top: -100px;
+    left: -100px;
+}
+}
+
+.profile-img {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid #38bdf8;
+    box-shadow: 0 0 25px rgba(56,189,248,0.6);
+    transition: 0.4s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+}
+
+/* BUTTONS */
+
+.btn {
+    display: inline-block;
+    padding: 10px 22px;
+    background: #38bdf8;
+    color: #0f172a;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 12px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    padding: 10px 22px;
+    border: 2px solid #38bdf8;
+    color: #38bdf8;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+/* SECTIONS */
+
+section {
+    padding: 100px 80px;
+}
+
+/* CARDS */
+
+.project-card,
+.skill-card {
+    background: #1e293b;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: 0.4s ease;
+}
+
+.project-card:hover,
+.skill-card:hover {
+    transform: translateY(-8px);
+}
+
+/* SKILLS */
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 70px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    color: #38bdf8;
+
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.5);
+}
+section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #38bdf8;
+}
+.logo {
+    font-size: 40px !important;
+    font-weight: 700;
+    color: #38bdf8;
+}
+.logo {
+    text-transform: uppercase;
+}
+.logo {
+    text-transform: capitalize;
+}
+.logo {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+@keyframes glowPulse {
+    from {
+        text-shadow:
+            0 0 5px #38bdf8,
+            0 0 10px #38bdf8,
+            0 0 20px #38bdf8,
+            0 0 40px #0ea5e9,
+            0 0 80px #0ea5e9;
+    }
+    to {
+        text-shadow:
+            0 0 10px #7dd3fc,
+            0 0 20px #7dd3fc,
+            0 0 40px #38bdf8,
+            0 0 80px #0ea5e9,
+            0 0 120px #0ea5e9;
+    }
+}
+.hero h1 {
+    transition: transform 0.4s ease;
+}
+
+.hero h1:hover {
+    transform: scale(1.05);
+}
