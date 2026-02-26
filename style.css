@@ -12,6 +12,19 @@ body {
     line-height: 1.6;
 }
 
+/* ================= SCROLL PROGRESS ================= */
+
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: #38bdf8;
+    width: 0%;
+    z-index: 2000;
+    transition: width 0.2s ease;
+}
+
 /* ================= NAVBAR ================= */
 
 nav {
@@ -63,16 +76,41 @@ nav a:hover {
     overflow: hidden;
 }
 
-.hero::before {
-    content: "";
+/* Floating shapes */
+
+.floating-shape {
     position: absolute;
-    width: 400px;
-    height: 400px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.12;
+    animation: floatMove 8s ease-in-out infinite alternate;
+    z-index: 0;
+}
+
+.shape1 {
+    width: 300px;
+    height: 300px;
     background: #38bdf8;
-    filter: blur(200px);
-    opacity: 0.15;
-    top: -100px;
-    left: -100px;
+    top: 10%;
+    right: 10%;
+}
+
+.shape2 {
+    width: 250px;
+    height: 250px;
+    background: #0ea5e9;
+    bottom: 10%;
+    left: 10%;
+}
+
+@keyframes floatMove {
+    from { transform: translateY(-20px); }
+    to { transform: translateY(20px); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
 }
 
 .hero h1 {
@@ -128,6 +166,7 @@ nav a:hover {
 
 .btn:hover {
     transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(56,189,248,0.6);
 }
 
 .btn-outline {
@@ -142,6 +181,7 @@ nav a:hover {
 .btn-outline:hover {
     background: #38bdf8;
     color: #0f172a;
+    box-shadow: 0 0 15px rgba(56,189,248,0.6);
 }
 
 /* ================= SECTIONS ================= */
@@ -157,6 +197,19 @@ section h2 {
     color: #38bdf8;
 }
 
+/* ================= SECTION REVEAL ================= */
+
+.fade-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.fade-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* ================= CARDS ================= */
 
 .project-card,
@@ -166,11 +219,37 @@ section h2 {
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
     transition: 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before,
+.skill-card::before {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(56,189,248,0.2),
+        transparent
+    );
+    top: -100%;
+    left: -100%;
+    transform: rotate(25deg);
+    transition: 0.6s ease;
+}
+
+.project-card:hover::before,
+.skill-card:hover::before {
+    top: 100%;
+    left: 100%;
 }
 
 .project-card:hover,
 .skill-card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
 }
 
 /* ================= SKILLS ================= */
