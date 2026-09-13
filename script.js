@@ -1,4 +1,5 @@
 /* =========================================================
+   ASHWIN V G
    CYBERSECURITY PORTFOLIO
    script.js
 ========================================================= */
@@ -12,7 +13,11 @@ const progressBar =
     document.getElementById("progress-bar");
 
 
-window.addEventListener("scroll", () => {
+function updateProgress() {
+
+    if (!progressBar) {
+        return;
+    }
 
     const scrollTop =
         window.scrollY;
@@ -31,7 +36,16 @@ window.addEventListener("scroll", () => {
     progressBar.style.width =
         `${progress}%`;
 
-});
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateProgress,
+    { passive: true }
+);
+
+updateProgress();
 
 
 /* =========================================================
@@ -42,7 +56,7 @@ const sections =
     document.querySelectorAll(".fade-section");
 
 
-const revealSections = () => {
+function revealSections() {
 
     const windowHeight =
         window.innerHeight;
@@ -52,15 +66,17 @@ const revealSections = () => {
         const sectionTop =
             section.getBoundingClientRect().top;
 
-        if (sectionTop < windowHeight - 100) {
+        if (sectionTop < windowHeight - 80) {
 
-            section.classList.add("visible");
+            section.classList.add(
+                "visible"
+            );
 
         }
 
     });
 
-};
+}
 
 
 window.addEventListener(
@@ -76,7 +92,7 @@ window.addEventListener(
 
 
 /* =========================================================
-   TERMINAL TYPING EFFECT
+   TERMINAL TYPING
 ========================================================= */
 
 const typingElement =
@@ -101,7 +117,9 @@ if (typingElement) {
         ) {
 
             typingElement.textContent +=
-                originalText.charAt(characterIndex);
+                originalText.charAt(
+                    characterIndex
+                );
 
             characterIndex++;
 
@@ -112,8 +130,6 @@ if (typingElement) {
 
         } else {
 
-            /* Add blinking cursor after typing */
-
             typingElement.classList.add(
                 "typing-complete"
             );
@@ -123,27 +139,32 @@ if (typingElement) {
     }
 
 
-    window.addEventListener("load", () => {
+    window.addEventListener(
+        "load",
+        () => {
 
-        setTimeout(
-            typeText,
-            800
-        );
+            setTimeout(
+                typeText,
+                800
+            );
 
-    });
+        }
+    );
 
 }
 
 
 /* =========================================================
-   NAVBAR ACTIVE SECTION
+   ACTIVE NAVIGATION
 ========================================================= */
 
 const navLinks =
-    document.querySelectorAll("nav a");
+    document.querySelectorAll(
+        "nav a"
+    );
 
 
-const observedSections =
+const pageSections =
     document.querySelectorAll(
         "section[id]"
     );
@@ -156,31 +177,34 @@ const sectionObserver =
 
             entries.forEach(entry => {
 
-                if (entry.isIntersecting) {
+                if (!entry.isIntersecting) {
+                    return;
+                }
 
-                    const currentId =
-                        entry.target.getAttribute("id");
+                const id =
+                    entry.target.getAttribute(
+                        "id"
+                    );
 
-                    navLinks.forEach(link => {
+                navLinks.forEach(link => {
 
-                        link.classList.remove(
+                    link.classList.remove(
+                        "active"
+                    );
+
+                    if (
+                        link.getAttribute(
+                            "href"
+                        ) === `#${id}`
+                    ) {
+
+                        link.classList.add(
                             "active"
                         );
 
-                        if (
-                            link.getAttribute("href") ===
-                            `#${currentId}`
-                        ) {
+                    }
 
-                            link.classList.add(
-                                "active"
-                            );
-
-                        }
-
-                    });
-
-                }
+                });
 
             });
 
@@ -193,15 +217,61 @@ const sectionObserver =
     );
 
 
-observedSections.forEach(section => {
+pageSections.forEach(section => {
 
-    sectionObserver.observe(section);
+    sectionObserver.observe(
+        section
+    );
 
 });
 
 
 /* =========================================================
-   TERMINAL COMMAND EFFECT
+   SMOOTH NAVIGATION
+========================================================= */
+
+navLinks.forEach(link => {
+
+    link.addEventListener(
+        "click",
+        event => {
+
+            const href =
+                link.getAttribute(
+                    "href"
+                );
+
+            if (
+                !href ||
+                !href.startsWith("#")
+            ) {
+                return;
+            }
+
+            const target =
+                document.querySelector(
+                    href
+                );
+
+            if (!target) {
+                return;
+            }
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   TERMINAL INTERACTION
 ========================================================= */
 
 const terminal =
@@ -239,7 +309,7 @@ if (terminal) {
 
 
 /* =========================================================
-   SECURITY STATUS
+   SYSTEM STATUS
 ========================================================= */
 
 const statusDot =
@@ -300,7 +370,7 @@ projectCards.forEach(card => {
 
 
 /* =========================================================
-   SECURITY LAB STATUS
+   SECURITY LAB INTERACTION
 ========================================================= */
 
 const labItems =
@@ -311,21 +381,27 @@ const labItems =
 
 labItems.forEach(item => {
 
+    const status =
+        item.querySelector(
+            ".lab-status"
+        );
+
+
+    if (!status) {
+        return;
+    }
+
+
+    const originalStatus =
+        status.textContent;
+
+
     item.addEventListener(
         "mouseenter",
         () => {
 
-            const status =
-                item.querySelector(
-                    ".lab-status"
-                );
-
-            if (status) {
-
-                status.textContent =
-                    "ACTIVE";
-
-            }
+            status.textContent =
+                "ACTIVE";
 
         }
     );
@@ -335,17 +411,8 @@ labItems.forEach(item => {
         "mouseleave",
         () => {
 
-            const status =
-                item.querySelector(
-                    ".lab-status"
-                );
-
-            if (status) {
-
-                status.textContent =
-                    "LEARNING";
-
-            }
+            status.textContent =
+                originalStatus;
 
         }
     );
@@ -354,54 +421,12 @@ labItems.forEach(item => {
 
 
 /* =========================================================
-   SMOOTH NAVIGATION
-========================================================= */
-
-navLinks.forEach(link => {
-
-    link.addEventListener(
-        "click",
-        event => {
-
-            const targetId =
-                link.getAttribute("href");
-
-            if (
-                !targetId ||
-                !targetId.startsWith("#")
-            ) {
-                return;
-            }
-
-            const target =
-                document.querySelector(
-                    targetId
-                );
-
-            if (!target) {
-                return;
-            }
-
-            event.preventDefault();
-
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        }
-    );
-
-});
-
-
-/* =========================================================
-   SECURITY CONSOLE MESSAGE
+   CONSOLE MESSAGE
 ========================================================= */
 
 console.log(
     "%cASHWIN V G",
-    "font-size: 20px; font-weight: bold;"
+    "font-size: 20px; font-weight: 700;"
 );
 
 console.log(
@@ -410,11 +435,11 @@ console.log(
 );
 
 console.log(
-    "%cSystem initialized successfully.",
+    "%c[ SYSTEM ] ONLINE",
     "font-size: 12px;"
 );
 
 console.log(
-    "%c[STATUS] ONLINE",
+    "%c[ MODE ] DEFENSIVE",
     "font-size: 12px;"
 );
