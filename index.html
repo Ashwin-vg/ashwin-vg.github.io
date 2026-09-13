@@ -1,1330 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Ashwin V G | Cybersecurity Portfolio</title>
+    <title>Ashwin V G | Cybersecurity & Software Portfolio</title>
 
     <meta name="description"
-          content="Ashwin V G - Computer Science student exploring cybersecurity, networking, Linux, Python and software development.">
+        content="Ashwin V G - Computer Science student exploring cybersecurity, software development, networking, Linux, Python and secure applications.">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-          rel="stylesheet">
-
-    <style>
-
-        /* =====================================================
-           RESET
-        ===================================================== */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: #05080d;
-            color: #e8eef5;
-            font-family: "Inter", sans-serif;
-            overflow-x: hidden;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        ::selection {
-            background: rgba(0, 255, 170, 0.2);
-            color: #ffffff;
-        }
-
-        :root {
-            --bg: #05080d;
-            --panel: #09111a;
-            --panel2: #0c151f;
-
-            --white: #edf4f8;
-            --muted: #81909f;
-            --muted2: #566574;
-
-            --green: #4dff9b;
-            --green-soft: #8affbd;
-
-            --cyan: #42c8ff;
-            --cyan-soft: #86ddff;
-
-            --border: rgba(66, 200, 255, 0.15);
-            --green-border: rgba(77, 255, 155, 0.17);
-        }
-
-        /* =====================================================
-           SCROLL PROGRESS
-        ===================================================== */
-
-        #progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-
-            width: 0;
-            height: 3px;
-
-            z-index: 9999;
-
-            background: linear-gradient(
-                90deg,
-                var(--cyan),
-                var(--green)
-            );
-
-            box-shadow:
-                0 0 15px rgba(66, 200, 255, 0.8);
-        }
-
-        /* =====================================================
-           BACKGROUND
-        ===================================================== */
-
-        body::before {
-            content: "";
-
-            position: fixed;
-            inset: 0;
-
-            pointer-events: none;
-            z-index: -1;
-
-            background-image:
-                linear-gradient(
-                    rgba(66, 200, 255, 0.025) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(66, 200, 255, 0.025) 1px,
-                    transparent 1px
-                );
-
-            background-size: 55px 55px;
-        }
-
-        body::after {
-            content: "";
-
-            position: fixed;
-            inset: 0;
-
-            pointer-events: none;
-            z-index: -1;
-
-            background:
-                radial-gradient(
-                    circle at 20% 10%,
-                    rgba(66, 200, 255, 0.055),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 80% 70%,
-                    rgba(77, 255, 155, 0.035),
-                    transparent 30%
-                );
-        }
-
-        /* =====================================================
-           NAVBAR
-        ===================================================== */
-
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-
-            width: 100%;
-            height: 70px;
-
-            padding: 0 7%;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            z-index: 1000;
-
-            background: rgba(5, 8, 13, 0.82);
-
-            border-bottom:
-                1px solid rgba(66, 200, 255, 0.08);
-
-            backdrop-filter: blur(18px);
-        }
-
-        .logo {
-            font-family: "JetBrains Mono", monospace;
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-        }
-
-        .logo span {
-            color: var(--green);
-        }
-
-        nav ul {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        nav a {
-            position: relative;
-
-            color: #7d8b99;
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 10px;
-
-            transition: 0.25s ease;
-        }
-
-        nav a::after {
-            content: "";
-
-            position: absolute;
-
-            left: 0;
-            bottom: -8px;
-
-            width: 0;
-            height: 1px;
-
-            background: var(--green);
-
-            transition: 0.25s ease;
-        }
-
-        nav a:hover,
-        nav a.active {
-            color: var(--green);
-        }
-
-        nav a:hover::after,
-        nav a.active::after {
-            width: 100%;
-        }
-
-        /* =====================================================
-           HERO
-        ===================================================== */
-
-        .hero {
-            min-height: 100vh;
-
-            padding: 130px 7% 90px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            position: relative;
-        }
-
-        .hero-container {
-            width: 100%;
-            max-width: 1100px;
-
-            display: grid;
-
-            grid-template-columns:
-                1.35fr 0.65fr;
-
-            gap: 55px;
-
-            align-items: center;
-        }
-
-        .terminal {
-            overflow: hidden;
-
-            border:
-                1px solid rgba(66, 200, 255, 0.22);
-
-            border-radius: 10px;
-
-            background:
-                rgba(5, 10, 16, 0.94);
-
-            box-shadow:
-                0 30px 90px rgba(0, 0, 0, 0.4),
-                0 0 80px rgba(66, 200, 255, 0.035);
-        }
-
-        .terminal-header {
-            height: 43px;
-
-            padding: 0 16px;
-
-            display: flex;
-            align-items: center;
-
-            gap: 15px;
-
-            border-bottom:
-                1px solid rgba(255, 255, 255, 0.06);
-
-            background:
-                rgba(255, 255, 255, 0.025);
-        }
-
-        .terminal-dots {
-            display: flex;
-            gap: 7px;
-        }
-
-        .terminal-dots span {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: #35404b;
-        }
-
-        .terminal-dots span:nth-child(1) {
-            background: #ef6c73;
-        }
-
-        .terminal-dots span:nth-child(2) {
-            background: #e8b84c;
-        }
-
-        .terminal-dots span:nth-child(3) {
-            background: var(--green);
-        }
-
-        .terminal-title {
-            color: #657381;
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 10px;
-        }
-
-        .terminal-body {
-            padding: 40px;
-        }
-
-        .terminal-command {
-            color: #7f8d99;
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 11px;
-
-            margin-bottom: 15px;
-        }
-
-        .green {
-            color: var(--green);
-        }
-
-        .terminal-body h1 {
-            font-size: clamp(48px, 7vw, 86px);
-
-            line-height: 0.95;
-
-            letter-spacing: -0.065em;
-
-            margin-bottom: 15px;
-        }
-
-        .terminal-role {
-            color: var(--cyan);
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 12px;
-
-            margin-bottom: 30px;
-        }
-
-        .terminal-typing {
-            min-height: 20px;
-
-            color: var(--green-soft);
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 11px;
-        }
-
-        .cursor::after {
-            content: "▋";
-
-            margin-left: 5px;
-
-            color: var(--green);
-
-            animation: blink 0.8s infinite;
-        }
-
-        @keyframes blink {
-            0%, 45% {
-                opacity: 1;
-            }
-
-            46%, 100% {
-                opacity: 0;
-            }
-        }
-
-        /* =====================================================
-           HERO PROFILE
-        ===================================================== */
-
-        .hero-profile {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            text-align: center;
-        }
-
-        .profile-frame {
-            position: relative;
-
-            width: 235px;
-            height: 275px;
-
-            padding: 6px;
-
-            border:
-                1px solid rgba(77, 255, 155, 0.35);
-
-            background:
-                rgba(77, 255, 155, 0.03);
-
-            border-radius: 8px;
-
-            box-shadow:
-                0 0 45px rgba(77, 255, 155, 0.07);
-        }
-
-        .profile-frame::before {
-            content: "IDENTITY // ASHWIN_VG";
-
-            position: absolute;
-
-            top: -25px;
-            left: 0;
-
-            color: var(--green);
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 8px;
-
-            letter-spacing: 0.08em;
-        }
-
-        .profile-image {
-            width: 100%;
-            height: 100%;
-
-            display: block;
-
-            object-fit: cover;
-
-            border-radius: 5px;
-
-            filter:
-                grayscale(15%)
-                contrast(1.05);
-        }
-
-        .scan {
-            position: absolute;
-
-            left: 6px;
-
-            right: 6px;
-
-            height: 2px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    var(--green),
-                    transparent
-                );
-
-            box-shadow:
-                0 0 14px var(--green);
-
-            animation: scan 4s linear infinite;
-
-            pointer-events: none;
-        }
-
-        @keyframes scan {
-
-            0% {
-                top: 6px;
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            90% {
-                opacity: 1;
-            }
-
-            100% {
-                top: calc(100% - 8px);
-                opacity: 0;
-            }
-        }
-
-        .hero-status {
-            margin-top: 28px;
-
-            color: var(--green);
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 10px;
-        }
-
-        .status-dot {
-            display: inline-block;
-
-            width: 7px;
-            height: 7px;
-
-            margin-right: 7px;
-
-            border-radius: 50%;
-
-            background: var(--green);
-
-            box-shadow:
-                0 0 12px var(--green);
-        }
-
-        .hero-description {
-            max-width: 480px;
-
-            margin-top: 15px;
-
-            color: var(--muted);
-
-            font-size: 13px;
-
-            line-height: 1.8;
-        }
-
-        .hero-buttons {
-            margin-top: 25px;
-
-            display: flex;
-
-            gap: 10px;
-        }
-
-        .btn,
-        .btn-outline {
-            padding: 12px 17px;
-
-            border-radius: 5px;
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 9px;
-            font-weight: 600;
-
-            transition: 0.25s ease;
-        }
-
-        .btn {
-            color: #03100b;
-
-            background: var(--green);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-
-            box-shadow:
-                0 0 25px rgba(77, 255, 155, 0.25);
-        }
-
-        .btn-outline {
-            color: var(--cyan);
-
-            border:
-                1px solid rgba(66, 200, 255, 0.3);
-        }
-
-        .btn-outline:hover {
-            transform: translateY(-3px);
-
-            color: var(--green);
-
-            border-color: var(--green);
-        }
-
-        /* =====================================================
-           SECTIONS
-        ===================================================== */
-
-        .section {
-            width: min(1120px, 100%);
-
-            margin: auto;
-
-            padding: 110px 6%;
-        }
-
-        .fade-section {
-            opacity: 0;
-            transform: translateY(35px);
-
-            transition:
-                opacity 0.8s ease,
-                transform 0.8s ease;
-        }
-
-        .fade-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-label {
-            margin-bottom: 15px;
-
-            color: var(--green);
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 10px;
-
-            letter-spacing: 0.15em;
-        }
-
-        .section-label span {
-            color: var(--cyan);
-        }
-
-        .section h2 {
-            margin-bottom: 45px;
-
-            font-size: clamp(35px, 5vw, 56px);
-
-            letter-spacing: -0.05em;
-        }
-
-        .section h2 span {
-            color: var(--cyan);
-        }
-
-        /* =====================================================
-           ABOUT
-        ===================================================== */
-
-        .about-grid {
-            display: grid;
-
-            grid-template-columns:
-                0.75fr 1.25fr;
-
-            gap: 60px;
-
-            align-items: center;
-        }
-
-        .about-image-box {
-            position: relative;
-
-            max-width: 290px;
-        }
-
-        .about-image-box img {
-            width: 100%;
-
-            display: block;
-
-            border:
-                1px solid rgba(66, 200, 255, 0.25);
-
-            border-radius: 8px;
-
-            filter: grayscale(20%);
-        }
-
-        .image-label {
-            margin-top: 10px;
-
-            padding: 9px;
-
-            border:
-                1px solid rgba(77, 255, 155, 0.13);
-
-            color: var(--green);
-
-            background: #060b10;
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 8px;
-
-            text-align: center;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-
-            color: var(--muted);
-
-            font-size: 14px;
-            line-height: 1.9;
-        }
-
-        .about-terminal {
-            margin-top: 25px;
-
-            padding: 22px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 7px;
-
-            background: #070d13;
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 10px;
-        }
-
-        .profile-data {
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 15px;
-
-            margin-top: 18px;
-        }
-
-        .profile-data div {
-            display: flex;
-            flex-direction: column;
-
-            gap: 5px;
-        }
-
-        .profile-data span {
-            color: var(--green);
-
-            font-size: 8px;
-        }
-
-        .profile-data strong {
-            color: #aebbc6;
-
-            font-size: 9px;
-
-            font-weight: 500;
-        }
-
-        /* =====================================================
-           SKILLS
-        ===================================================== */
-
-        .skills-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 15px;
-        }
-
-        .skill-card {
-            padding: 26px;
-
-            min-height: 185px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 8px;
-
-            background:
-                rgba(9, 17, 26, 0.78);
-
-            transition: 0.25s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-
-            border-color:
-                rgba(77, 255, 155, 0.3);
-
-            box-shadow:
-                0 20px 50px rgba(0, 0, 0, 0.25);
-        }
-
-        .skill-icon {
-            width: 42px;
-            height: 42px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            margin-bottom: 20px;
-
-            border:
-                1px solid var(--green-border);
-
-            border-radius: 5px;
-
-            color: var(--green);
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 9px;
-        }
-
-        .skill-card h3 {
-            margin-bottom: 10px;
-
-            font-size: 15px;
-        }
-
-        .skill-card p {
-            color: var(--muted);
-
-            font-size: 11px;
-
-            line-height: 1.7;
-        }
-
-        /* =====================================================
-           PROJECTS
-        ===================================================== */
-
-        .projects-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 18px;
-        }
-
-        .project-card {
-            padding: 30px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 8px;
-
-            background:
-                rgba(9, 17, 26, 0.8);
-
-            transition: 0.25s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-
-            border-color:
-                rgba(66, 200, 255, 0.35);
-
-            box-shadow:
-                0 25px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .project-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            margin-bottom: 25px;
-        }
-
-        .project-number {
-            color: var(--cyan);
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 10px;
-        }
-
-        .project-status {
-            color: var(--green);
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 8px;
-        }
-
-        .project-card h3 {
-            margin-bottom: 13px;
-
-            font-size: 25px;
-        }
-
-        .project-card p {
-            color: var(--muted);
-
-            font-size: 12px;
-
-            line-height: 1.8;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-
-            gap: 6px;
-
-            margin: 23px 0;
-        }
-
-        .tech-stack span {
-            padding: 5px 8px;
-
-            border:
-                1px solid rgba(66, 200, 255, 0.13);
-
-            border-radius: 4px;
-
-            color: #8aa7b6;
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 8px;
-        }
-
-        .project-buttons {
-            display: flex;
-            gap: 8px;
-        }
-
-        .btn-small,
-        .btn-small-outline {
-            padding: 10px 13px;
-
-            border-radius: 4px;
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 9px;
-
-            transition: 0.2s ease;
-        }
-
-        .btn-small {
-            color: #03100b;
-            background: var(--green);
-        }
-
-        .btn-small-outline {
-            color: var(--cyan);
-
-            border:
-                1px solid rgba(66, 200, 255, 0.3);
-        }
-
-        .btn-small:hover,
-        .btn-small-outline:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-small-outline:hover {
-            color: var(--green);
-
-            border-color: var(--green);
-        }
-
-        /* =====================================================
-           SECURITY LAB
-        ===================================================== */
-
-        .labs-container {
-            display: flex;
-            flex-direction: column;
-
-            gap: 10px;
-        }
-
-        .lab-item {
-            display: grid;
-
-            grid-template-columns:
-                50px 1fr auto;
-
-            align-items: center;
-
-            gap: 20px;
-
-            padding: 22px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 7px;
-
-            background:
-                rgba(9, 17, 26, 0.78);
-
-            transition: 0.25s ease;
-        }
-
-        .lab-item:hover {
-            transform: translateX(5px);
-
-            border-color:
-                rgba(77, 255, 155, 0.3);
-        }
-
-        .lab-number {
-            width: 38px;
-            height: 38px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border:
-                1px solid var(--green-border);
-
-            border-radius: 5px;
-
-            color: var(--green);
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 9px;
-        }
-
-        .lab-item h3 {
-            margin-bottom: 5px;
-
-            font-size: 14px;
-        }
-
-        .lab-item p {
-            color: var(--muted);
-
-            font-size: 11px;
-
-            line-height: 1.7;
-        }
-
-        .lab-status {
-            color: var(--cyan);
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 8px;
-
-            letter-spacing: 0.08em;
-        }
-
-        /* =====================================================
-           CURRENT OPERATIONS
-        ===================================================== */
-
-        .current-box {
-            display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            gap: 45px;
-
-            align-items: center;
-
-            padding: 40px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 9px;
-
-            background:
-                rgba(8, 15, 22, 0.85);
-        }
-
-        .operations-terminal {
-            padding: 23px;
-
-            border:
-                1px solid var(--green-border);
-
-            border-radius: 6px;
-
-            background: #030609;
-
-            color: #71808e;
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 10px;
-
-            line-height: 2;
-        }
-
-        .current-text h2 {
-            margin-bottom: 15px;
-        }
-
-        .current-text p {
-            color: var(--muted);
-
-            font-size: 13px;
-
-            line-height: 1.8;
-        }
-
-        /* =====================================================
-           CONTACT
-        ===================================================== */
-
-        .contact-section {
-            text-align: center;
-        }
-
-        .contact-description {
-            max-width: 620px;
-
-            margin:
-                -20px auto 35px;
-
-            color: var(--muted);
-
-            font-size: 13px;
-
-            line-height: 1.8;
-        }
-
-        .contact-links {
-            display: flex;
-
-            justify-content: center;
-
-            flex-wrap: wrap;
-
-            gap: 12px;
-        }
-
-        .contact-links a {
-            min-width: 210px;
-
-            padding: 17px 20px;
-
-            display: flex;
-            flex-direction: column;
-
-            gap: 7px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 6px;
-
-            background:
-                rgba(9, 17, 26, 0.75);
-
-            color: #aab7c2;
-
-            font-family: "JetBrains Mono", monospace;
-            font-size: 9px;
-
-            transition: 0.25s ease;
-        }
-
-        .contact-links a:hover {
-            transform: translateY(-4px);
-
-            color: var(--green);
-
-            border-color: var(--green);
-        }
-
-        .contact-label {
-            color: var(--cyan);
-
-            font-size: 8px;
-
-            letter-spacing: 0.1em;
-        }
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        footer {
-            padding: 30px 7%;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            gap: 20px;
-
-            flex-wrap: wrap;
-
-            border-top:
-                1px solid rgba(66, 200, 255, 0.08);
-
-            color: #586675;
-
-            font-size: 9px;
-        }
-
-        .footer-terminal {
-            font-family: "JetBrains Mono", monospace;
-        }
-
-        /* =====================================================
-           MOBILE
-        ===================================================== */
-
-        @media (max-width: 900px) {
-
-            .hero-container {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-profile {
-                order: -1;
-            }
-
-            .skills-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .current-box {
-                grid-template-columns: 1fr;
-            }
-
-        }
-
-        @media (max-width: 650px) {
-
-            nav {
-                padding: 0 5%;
-            }
-
-            nav ul {
-                display: none;
-            }
-
-            .hero {
-                padding:
-                    105px 5% 70px;
-            }
-
-            .terminal-body {
-                padding: 28px 20px;
-            }
-
-            .terminal-body h1 {
-                font-size: 48px;
-            }
-
-            .terminal-command {
-                font-size: 9px;
-            }
-
-            .hero-description {
-                font-size: 12px;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .section {
-                padding:
-                    80px 5%;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-image-box {
-                margin: auto;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .lab-item {
-                grid-template-columns:
-                    42px 1fr;
-            }
-
-            .lab-status {
-                grid-column: 2;
-            }
-
-            .current-box {
-                padding: 25px;
-            }
-
-            .contact-links {
-                flex-direction: column;
-            }
-
-            .contact-links a {
-                width: 100%;
-            }
-
-            footer {
-                flex-direction: column;
-                text-align: center;
-            }
-
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-            html {
-                scroll-behavior: auto;
-            }
-
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
-
-        }
-
-    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- =====================================================
-         PROGRESS
-    ===================================================== -->
+    <!-- ================= SCROLL PROGRESS ================= -->
 
     <div id="progress-bar"></div>
 
 
-    <!-- =====================================================
-         NAVIGATION
-    ===================================================== -->
+    <!-- ================= NAVBAR ================= -->
 
     <nav>
 
@@ -1359,55 +59,56 @@
     </nav>
 
 
-    <!-- =====================================================
-         HERO
-    ===================================================== -->
+    <!-- ================= HERO ================= -->
 
     <section class="hero">
 
-        <div class="hero-container">
+        <div class="grid-background"></div>
 
-            <div class="terminal">
+        <div class="glow glow-one"></div>
+        <div class="glow glow-two"></div>
+
+
+        <div class="hero-content">
+
+            <div class="terminal-window">
 
                 <div class="terminal-header">
 
-                    <div class="terminal-dots">
+                    <div class="terminal-buttons">
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
 
-                    <div class="terminal-title">
-                        ashwin@security: ~/portfolio
-                    </div>
+                    <p>
+                        ashwin@security:~
+                        <span class="terminal-path">/portfolio</span>
+                    </p>
 
                 </div>
 
+
                 <div class="terminal-body">
 
-                    <p class="terminal-command">
-                        <span class="green">
-                            ashwin@security
-                        </span>:~$ whoami
+                    <p>
+                        <span class="terminal-green">ashwin@security</span>:~$
+                        whoami
                     </p>
 
-                    <h1>
-                        ASHWIN V G
-                    </h1>
+                    <h1>ASHWIN V G</h1>
 
-                    <p class="terminal-role">
+                    <p class="terminal-output">
                         Computer Science Student · Cybersecurity Enthusiast
                     </p>
 
-                    <p class="terminal-command">
-                        <span class="green">
-                            ashwin@security
-                        </span>:~$ ./start_journey.sh
+                    <p>
+                        <span class="terminal-green">ashwin@security</span>:~$
+                        ./start_security_journey.sh
                     </p>
 
-                    <p id="typing"
-                       class="terminal-typing">
-                        Web Security | Networking | Linux | Python
+                    <p class="typing-text">
+                        Web Security | Network Security | Linux | Python
                     </p>
 
                 </div>
@@ -1415,45 +116,89 @@
             </div>
 
 
-            <div class="hero-profile">
+            <div class="hero-info">
 
-                <div class="profile-frame">
+                <div class="security-readout">
 
-                    <img
-                        src="images/profile.jpeg"
-                        alt="Ashwin V G"
-                        class="profile-image"
-                    >
+                    <span class="readout-key">
+                        STATUS
+                    </span>
 
-                    <div class="scan"></div>
+                    <span class="readout-value">
+                        <span class="status-dot"></span>
+                        ONLINE
+                    </span>
+
+                    <span class="readout-separator">
+                        /
+                    </span>
+
+                    <span class="readout-key">
+                        MODE
+                    </span>
+
+                    <span class="readout-value">
+                        LEARNING
+                    </span>
+
+                    <span class="readout-separator">
+                        /
+                    </span>
+
+                    <span class="readout-key">
+                        FOCUS
+                    </span>
+
+                    <span class="readout-value">
+                        SECURITY
+                    </span>
 
                 </div>
 
-                <p class="hero-status">
+
+                <div class="status">
+
                     <span class="status-dot"></span>
-                    SYSTEM ONLINE
-                </p>
+
+                    SYSTEM STATUS: ONLINE
+
+                </div>
+
 
                 <p class="hero-description">
-                    Exploring cybersecurity, networking,
-                    Linux, Python and secure software
-                    development through practical learning.
+
+                    Computer Science student exploring cybersecurity,
+                    software development, networking and secure
+                    application concepts through hands-on learning
+                    and practical projects.
+
                 </p>
+
 
                 <div class="hero-buttons">
 
-                    <a href="#projects"
-                       class="btn">
+                    <a href="#projects" class="btn">
                         View Projects
                     </a>
 
-                    <a
-                        href="https://github.com/Ashwin-vg"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn-outline">
+                    <a href="https://github.com/Ashwin-vg"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="btn-outline">
+
                         GitHub
+
                     </a>
+
+                </div>
+
+
+                <div class="hero-meta">
+
+                    <span>WEB SECURITY</span>
+                    <span>NETWORKING</span>
+                    <span>LINUX</span>
+                    <span>PYTHON</span>
 
                 </div>
 
@@ -1464,12 +209,9 @@
     </section>
 
 
-    <!-- =====================================================
-         ABOUT
-    ===================================================== -->
+    <!-- ================= ABOUT ================= -->
 
-    <section id="about"
-             class="section fade-section">
+    <section id="about" class="section fade-section">
 
         <div class="section-label">
             <span>01</span> ABOUT
@@ -1479,77 +221,85 @@
             About <span>the Operator</span>
         </h2>
 
+
         <div class="about-grid">
 
-            <div class="about-image-box">
+            <div class="about-text">
 
-                <img
-                    src="images/profile.jpeg"
-                    alt="Ashwin V G"
-                >
+                <div class="profile-container">
 
-                <div class="image-label">
-                    USER_PROFILE // VERIFIED
+                    <img
+                        src="images/profile.jpeg"
+                        alt="Ashwin V G"
+                        class="profile-image">
+
                 </div>
+
+
+                <p>
+                    I am an S4 Computer Science student under KTU
+                    with a growing interest in cybersecurity,
+                    software development and secure systems.
+                </p>
+
+                <p>
+                    My background in full-stack development has
+                    given me an understanding of how web applications,
+                    APIs and backend systems work. I am now applying
+                    that foundation to security and learning how
+                    systems can be designed and built more securely.
+                </p>
+
+                <p>
+                    I enjoy learning through practical experimentation,
+                    programming projects, networking concepts, Linux
+                    environments and security-focused labs.
+                </p>
 
             </div>
 
 
-            <div class="about-text">
+            <div class="about-terminal">
 
-                <p>
-                    I am an S5 Computer Science student under KTU
-                    with a growing interest in cybersecurity and
-                    secure software development.
-                </p>
+                <div class="terminal-line">
 
-                <p>
-                    My background in software development has
-                    helped me understand how web applications,
-                    APIs and backend systems work. I am building
-                    on that foundation by learning how systems
-                    can be secured and how vulnerabilities arise.
-                </p>
+                    <span class="green">$</span>
+                    cat profile.txt
 
-                <p>
-                    I enjoy practical experimentation and
-                    continuously learning about networking,
-                    Linux, Python, web security and application
-                    security.
-                </p>
+                </div>
 
 
-                <div class="about-terminal">
+                <div class="profile-data">
 
-                    <div>
-                        <span class="green">
-                            ashwin@security
-                        </span>:~$ cat profile.txt
-                    </div>
+                    <p>
+                        <span>NAME</span>
+                        Ashwin V G
+                    </p>
 
-                    <div class="profile-data">
+                    <p>
+                        <span>ROLE</span>
+                        Computer Science Student
+                    </p>
 
-                        <div>
-                            <span>NAME</span>
-                            <strong>Ashwin V G</strong>
-                        </div>
+                    <p>
+                        <span>INTEREST</span>
+                        Cybersecurity & Software
+                    </p>
 
-                        <div>
-                            <span>ROLE</span>
-                            <strong>Cybersecurity Enthusiast</strong>
-                        </div>
+                    <p>
+                        <span>EDUCATION</span>
+                        Computer Science
+                    </p>
 
-                        <div>
-                            <span>EDUCATION</span>
-                            <strong>Computer Science</strong>
-                        </div>
+                    <p>
+                        <span>FOCUS</span>
+                        Security & Networking
+                    </p>
 
-                        <div>
-                            <span>FOCUS</span>
-                            <strong>Security & Networking</strong>
-                        </div>
-
-                    </div>
+                    <p>
+                        <span>STATUS</span>
+                        Learning & Building
+                    </p>
 
                 </div>
 
@@ -1560,12 +310,9 @@
     </section>
 
 
-    <!-- =====================================================
-         SKILLS
-    ===================================================== -->
+    <!-- ================= SKILLS ================= -->
 
-    <section id="skills"
-             class="section fade-section">
+    <section id="skills" class="section fade-section">
 
         <div class="section-label">
             <span>02</span> SKILLS
@@ -1575,7 +322,11 @@
             Technical <span>Toolkit</span>
         </h2>
 
+
         <div class="skills-grid">
+
+
+            <!-- WEB SECURITY -->
 
             <div class="skill-card">
 
@@ -1588,18 +339,20 @@
                 </h3>
 
                 <p>
-                    Learning web application architecture,
-                    authentication, APIs and common security
-                    concepts.
+                    Web application architecture, APIs,
+                    authentication concepts and security
+                    fundamentals.
                 </p>
 
             </div>
 
 
+            <!-- NETWORKING -->
+
             <div class="skill-card">
 
                 <div class="skill-icon">
-                    NET
+                    [NET]
                 </div>
 
                 <h3>
@@ -1607,12 +360,14 @@
                 </h3>
 
                 <p>
-                    TCP/IP, HTTP, DNS, ports and fundamental
-                    network communication concepts.
+                    TCP/IP, HTTP, DNS, ports and
+                    network communication fundamentals.
                 </p>
 
             </div>
 
+
+            <!-- LINUX -->
 
             <div class="skill-card">
 
@@ -1625,17 +380,19 @@
                 </h3>
 
                 <p>
-                    Command line, permissions, processes,
-                    filesystems and Linux fundamentals.
+                    Linux fundamentals, command line,
+                    permissions, processes and system concepts.
                 </p>
 
             </div>
 
 
+            <!-- PYTHON -->
+
             <div class="skill-card">
 
                 <div class="skill-icon">
-                    PY
+                    &gt;_
                 </div>
 
                 <h3>
@@ -1643,12 +400,14 @@
                 </h3>
 
                 <p>
-                    Python programming, scripting,
-                    automation and backend development.
+                    Python programming, automation,
+                    scripting and backend development.
                 </p>
 
             </div>
 
+
+            <!-- FASTAPI -->
 
             <div class="skill-card">
 
@@ -1657,16 +416,18 @@
                 </div>
 
                 <h3>
-                    Backend & APIs
+                    FastAPI & REST
                 </h3>
 
                 <p>
-                    FastAPI, REST APIs and backend application
-                    development.
+                    FastAPI, REST APIs, backend services
+                    and API-based application development.
                 </p>
 
             </div>
 
+
+            <!-- GIT -->
 
             <div class="skill-card">
 
@@ -1675,27 +436,25 @@
                 </div>
 
                 <h3>
-                    Development
+                    Git & GitHub
                 </h3>
 
                 <p>
-                    Git, GitHub, deployment and modern
-                    software development workflows.
+                    Version control, GitHub repositories,
+                    deployment workflows and collaboration.
                 </p>
 
             </div>
+
 
         </div>
 
     </section>
 
 
-    <!-- =====================================================
-         PROJECTS
-    ===================================================== -->
+    <!-- ================= PROJECTS ================= -->
 
-    <section id="projects"
-             class="section fade-section">
+    <section id="projects" class="section fade-section">
 
         <div class="section-label">
             <span>03</span> PROJECTS
@@ -1709,133 +468,197 @@
         <div class="projects-grid">
 
 
-            <!-- EXISTING PROJECT -->
+            <!-- ================= PROJECT 01 ================= -->
 
             <div class="project-card">
 
-                <div class="project-top">
-
-                    <span class="project-number">
-                        PROJECT_01
-                    </span>
-
-                    <span class="project-status">
-                        ● COMPLETED
-                    </span>
-
-                </div>
-
-                <h3>
-                    TypeMaster
-                </h3>
-
-                <p>
-                    A full-stack typing analytics platform
-                    featuring real-time performance tracking,
-                    word games and leaderboard functionality.
-                </p>
-
-
-                <div class="tech-stack">
-
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                    <span>Python</span>
-                    <span>FastAPI</span>
-                    <span>REST API</span>
-
+                <div class="project-number">
+                    01
                 </div>
 
 
-                <div class="project-buttons">
+                <div class="project-content">
 
-                    <a
-                        href="https://typemaster-l8bd.onrender.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn-small">
-                        Live Demo
-                    </a>
+                    <div class="project-status">
+                        ● COMPLETED // DEPLOYED
+                    </div>
 
-                    <a
-                        href="https://github.com/Ashwin-vg/TypeMaster"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn-small-outline">
-                        Source
-                    </a>
+                    <h3>
+                        TypeMaster
+                    </h3>
+
+                    <p>
+                        A full-stack typing analytics platform
+                        featuring real-time performance tracking,
+                        word games and leaderboard functionality.
+                    </p>
+
+
+                    <div class="project-focus">
+
+                        <span>
+                            FOCUS
+                        </span>
+
+                        <strong>
+                            FULL-STACK DEVELOPMENT
+                        </strong>
+
+                    </div>
+
+
+                    <div class="tech-stack">
+
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>Python</span>
+                        <span>FastAPI</span>
+                        <span>REST API</span>
+
+                    </div>
+
+
+                    <div class="project-buttons">
+
+                        <a
+                            href="https://typemaster-l8bd.onrender.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn-small">
+
+                            Live Demo
+
+                        </a>
+
+
+                        <a
+                            href="https://github.com/Ashwin-vg/TypeMaster"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn-small-outline">
+
+                            Source
+
+                        </a>
+
+                    </div>
 
                 </div>
 
             </div>
 
 
-            <!-- ADD YOUR NEXT REAL PROJECT HERE -->
+            <!-- ================= PROJECT 02 ================= -->
 
             <div class="project-card">
 
-                <div class="project-top">
-
-                    <span class="project-number">
-                        PROJECT_02
-                    </span>
-
-                    <span class="project-status">
-                        ● AVAILABLE
-                    </span>
-
+                <div class="project-number">
+                    02
                 </div>
 
-                <h3>
-                    More Projects
-                </h3>
 
-                <p>
-                    Additional software, web development and
-                    technical projects will be added here as
-                    they are completed.
-                </p>
+                <div class="project-content">
 
-                <div class="tech-stack">
+                    <div class="project-status">
+                        ● COMPLETED // DEPLOYED
+                    </div>
 
-                    <span>SOFTWARE</span>
-                    <span>WEB</span>
-                    <span>DEVELOPMENT</span>
+                    <h3>
+                        Hostel Management System
+                    </h3>
+
+                    <p>
+                        A full-stack hostel management application
+                        for managing students, rooms, room allocations
+                        and hostel dues using FastAPI and MongoDB.
+                    </p>
+
+
+                    <div class="project-focus">
+
+                        <span>
+                            FOCUS
+                        </span>
+
+                        <strong>
+                            FULL-STACK APPLICATION
+                        </strong>
+
+                    </div>
+
+
+                    <div class="tech-stack">
+
+                        <span>Python</span>
+                        <span>FastAPI</span>
+                        <span>MongoDB</span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+
+                    </div>
+
+
+                    <div class="project-buttons">
+
+                        <a
+                            href="https://hostel-system-g90c.onrender.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn-small">
+
+                            Live Demo
+
+                        </a>
+
+
+                        <a
+                            href="https://github.com/Ashwin-vg/hostel-system"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn-small-outline">
+
+                            Source
+
+                        </a>
+
+                    </div>
 
                 </div>
 
             </div>
+
 
         </div>
 
     </section>
 
 
-    <!-- =====================================================
-         SECURITY LAB
-    ===================================================== -->
+    <!-- ================= SECURITY LAB ================= -->
 
-    <section id="labs"
-             class="section fade-section">
+    <section id="labs" class="section fade-section">
 
         <div class="section-label">
             <span>04</span> SECURITY LAB
         </div>
 
         <h2>
-            Learning <span>Operations</span>
+            Security <span>Lab</span>
         </h2>
 
 
         <div class="labs-container">
 
 
+            <!-- LAB 01 -->
+
             <div class="lab-item">
 
-                <div class="lab-number">
+                <div class="lab-icon">
                     01
                 </div>
+
 
                 <div>
 
@@ -1850,6 +673,7 @@
 
                 </div>
 
+
                 <div class="lab-status">
                     LEARNING
                 </div>
@@ -1857,11 +681,14 @@
             </div>
 
 
+            <!-- LAB 02 -->
+
             <div class="lab-item">
 
-                <div class="lab-number">
+                <div class="lab-icon">
                     02
                 </div>
+
 
                 <div>
 
@@ -1876,6 +703,7 @@
 
                 </div>
 
+
                 <div class="lab-status">
                     LEARNING
                 </div>
@@ -1883,11 +711,14 @@
             </div>
 
 
+            <!-- LAB 03 -->
+
             <div class="lab-item">
 
-                <div class="lab-number">
+                <div class="lab-icon">
                     03
                 </div>
+
 
                 <div>
 
@@ -1896,12 +727,13 @@
                     </h3>
 
                     <p>
-                        Learning authentication, web
-                        vulnerabilities, APIs and secure
-                        application practices.
+                        Learning common web vulnerabilities,
+                        authentication concepts, APIs and
+                        secure application practices.
                     </p>
 
                 </div>
+
 
                 <div class="lab-status">
                     LEARNING
@@ -1910,11 +742,14 @@
             </div>
 
 
+            <!-- LAB 04 -->
+
             <div class="lab-item">
 
-                <div class="lab-number">
+                <div class="lab-icon">
                     04
                 </div>
+
 
                 <div>
 
@@ -1923,12 +758,12 @@
                     </h3>
 
                     <p>
-                        Exploring Python scripting,
-                        automation, networking and
-                        security-oriented programming.
+                        Using Python to understand automation,
+                        networking and security-oriented scripting.
                     </p>
 
                 </div>
+
 
                 <div class="lab-status">
                     LEARNING
@@ -1936,29 +771,42 @@
 
             </div>
 
+
         </div>
 
     </section>
 
 
-    <!-- =====================================================
-         CURRENT OPERATIONS
-    ===================================================== -->
+    <!-- ================= CURRENT WORK ================= -->
 
-    <section class="section fade-section">
+    <section class="section current-section fade-section">
 
         <div class="section-label">
             <span>05</span> CURRENT OPERATIONS
         </div>
 
+
         <div class="current-box">
 
-            <div class="operations-terminal">
+            <div class="current-terminal">
 
                 <p>
                     <span class="green">
                         ashwin@security
-                    </span>:~$ ps aux
+                    </span>:~$
+                    ps aux
+                </p>
+
+                <p>
+                    SECURITY_LEARNING_PROCESS
+                </p>
+
+                <p>
+                    NETWORKING_PROCESS
+                </p>
+
+                <p>
+                    PYTHON_AUTOMATION_PROCESS
                 </p>
 
                 <p>
@@ -1966,19 +814,7 @@
                 </p>
 
                 <p>
-                    NETWORKING_LEARNING_PROCESS
-                </p>
-
-                <p>
-                    LINUX_LEARNING_PROCESS
-                </p>
-
-                <p>
                     WEB_SECURITY_PROCESS
-                </p>
-
-                <p>
-                    PYTHON_PROCESS
                 </p>
 
                 <p>
@@ -1998,10 +834,9 @@
                 </h2>
 
                 <p>
-                    Currently developing my software skills
-                    while building a stronger foundation in
-                    cybersecurity and practical security
-                    concepts.
+                    Currently expanding my knowledge in cybersecurity
+                    while continuing to build real-world software
+                    projects and explore new technologies.
                 </p>
 
             </div>
@@ -2011,9 +846,7 @@
     </section>
 
 
-    <!-- =====================================================
-         CONTACT
-    ===================================================== -->
+    <!-- ================= CONTACT ================= -->
 
     <section id="contact"
              class="section contact-section fade-section">
@@ -2022,29 +855,38 @@
             <span>06</span> ESTABLISH CONNECTION
         </div>
 
+
         <h2>
             Establish <span>Connection</span>
         </h2>
 
+
         <p class="contact-description">
+
             Interested in cybersecurity, software development,
-            technology or collaborating on a project?
+            security research or collaborating on a project?
             Feel free to establish a connection.
+
         </p>
 
 
         <div class="contact-links">
 
-            <a href="mailto:ashwinvg.cyber@gmail.com">
+
+            <!-- EMAIL -->
+
+            <a href="mailto:ashwinachu948@gmail.com">
 
                 <span class="contact-label">
                     EMAIL
                 </span>
 
-                ashwinvg.cyber@gmail.com
+                ashwinachu948@gmail.com
 
             </a>
 
+
+            <!-- GITHUB -->
 
             <a
                 href="https://github.com/Ashwin-vg"
@@ -2060,6 +902,8 @@
             </a>
 
 
+            <!-- LINKEDIN -->
+
             <a
                 href="https://linkedin.com/in/ashwin-v-g-97732b328"
                 target="_blank"
@@ -2073,14 +917,13 @@
 
             </a>
 
+
         </div>
 
     </section>
 
 
-    <!-- =====================================================
-         FOOTER
-    ===================================================== -->
+    <!-- ================= FOOTER ================= -->
 
     <footer>
 
@@ -2088,234 +931,28 @@
 
             <span class="green">
                 ashwin@security
-            </span>:~$ exit
+            </span>:~$
+            exit
 
         </div>
+
 
         <p>
             © 2026 Ashwin V G
         </p>
 
-        <p>
+
+        <p class="footer-sub">
             Built with curiosity, code & security mindset.
         </p>
 
     </footer>
 
 
-    <!-- =====================================================
-         JAVASCRIPT
-    ===================================================== -->
+    <!-- ================= JAVASCRIPT ================= -->
 
-    <script>
-
-        /* =====================================================
-           SCROLL PROGRESS
-        ===================================================== */
-
-        const progressBar =
-            document.getElementById("progress-bar");
-
-        function updateProgress() {
-
-            const scrollTop =
-                window.scrollY;
-
-            const documentHeight =
-                document.documentElement.scrollHeight -
-                document.documentElement.clientHeight;
-
-            if (documentHeight <= 0) {
-                return;
-            }
-
-            const progress =
-                (scrollTop / documentHeight) * 100;
-
-            progressBar.style.width =
-                progress + "%";
-        }
-
-        window.addEventListener(
-            "scroll",
-            updateProgress,
-            { passive: true }
-        );
-
-        updateProgress();
-
-
-        /* =====================================================
-           SECTION REVEAL
-        ===================================================== */
-
-        const sections =
-            document.querySelectorAll(
-                ".fade-section"
-            );
-
-        const revealObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (entry.isIntersecting) {
-
-                            entry.target.classList.add(
-                                "visible"
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.12
-                }
-            );
-
-        sections.forEach(section => {
-            revealObserver.observe(section);
-        });
-
-
-        /* =====================================================
-           TERMINAL TYPING
-        ===================================================== */
-
-        const typing =
-            document.getElementById("typing");
-
-        const text =
-            typing.textContent.trim();
-
-        typing.textContent = "";
-
-        let index = 0;
-
-        function typeText() {
-
-            if (index < text.length) {
-
-                typing.textContent +=
-                    text.charAt(index);
-
-                index++;
-
-                setTimeout(
-                    typeText,
-                    45
-                );
-
-            } else {
-
-                typing.classList.add(
-                    "cursor"
-                );
-
-            }
-
-        }
-
-        window.addEventListener(
-            "load",
-            () => {
-
-                setTimeout(
-                    typeText,
-                    700
-                );
-
-            }
-        );
-
-
-        /* =====================================================
-           ACTIVE NAVIGATION
-        ===================================================== */
-
-        const navLinks =
-            document.querySelectorAll(
-                "nav a"
-            );
-
-        const pageSections =
-            document.querySelectorAll(
-                "section[id]"
-            );
-
-        const navObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (!entry.isIntersecting) {
-                            return;
-                        }
-
-                        const id =
-                            entry.target.id;
-
-                        navLinks.forEach(link => {
-
-                            link.classList.remove(
-                                "active"
-                            );
-
-                            if (
-                                link.getAttribute("href")
-                                === "#" + id
-                            ) {
-
-                                link.classList.add(
-                                    "active"
-                                );
-
-                            }
-
-                        });
-
-                    });
-
-                },
-                {
-                    threshold: 0.35
-                }
-            );
-
-        pageSections.forEach(section => {
-            navObserver.observe(section);
-        });
-
-
-        /* =====================================================
-           TERMINAL CONSOLE
-        ===================================================== */
-
-        console.log(
-            "%cASHWIN_VG",
-            "font-size:20px;font-weight:bold;"
-        );
-
-        console.log(
-            "%cCybersecurity Portfolio",
-            "font-size:13px;"
-        );
-
-        console.log(
-            "%c[SYSTEM] ONLINE",
-            "font-size:12px;"
-        );
-
-        console.log(
-            "%c[STATUS] Learning + Building",
-            "font-size:12px;"
-        );
-
-    </script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
