@@ -1,25 +1,97 @@
-// SCROLL REVEAL ANIMATION
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
 
-const revealElements = document.querySelectorAll("section");
+window.addEventListener("scroll", () => {
 
-function revealOnScroll() {
-    const windowHeight = window.innerHeight;
+    const scrollTop = window.scrollY;
 
-    revealElements.forEach((section) => {
-        const sectionTop = section.getBoundingClientRect().top;
+    const documentHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+
+    const progress =
+        (scrollTop / documentHeight) * 100;
+
+    document.getElementById("progress-bar").style.width =
+        progress + "%";
+
+});
+
+
+/* =========================================================
+   SECTION REVEAL
+========================================================= */
+
+const sections =
+    document.querySelectorAll(".fade-section");
+
+
+const revealSections = () => {
+
+    const windowHeight =
+        window.innerHeight;
+
+    sections.forEach(section => {
+
+        const sectionTop =
+            section.getBoundingClientRect().top;
 
         if (sectionTop < windowHeight - 100) {
-            section.style.opacity = "1";
-            section.style.transform = "translateY(0)";
+
+            section.classList.add("visible");
+
         }
+
     });
+
+};
+
+
+window.addEventListener(
+    "scroll",
+    revealSections
+);
+
+window.addEventListener(
+    "load",
+    revealSections
+);
+
+
+/* =========================================================
+   TERMINAL TYPING EFFECT
+========================================================= */
+
+const typingElement =
+    document.querySelector(".typing-text");
+
+const originalText =
+    typingElement.textContent.trim();
+
+typingElement.textContent = "";
+
+let characterIndex = 0;
+
+
+function typeText() {
+
+    if (characterIndex < originalText.length) {
+
+        typingElement.textContent +=
+            originalText.charAt(characterIndex);
+
+        characterIndex++;
+
+        setTimeout(typeText, 35);
+
+    }
+
 }
 
-window.addEventListener("scroll", revealOnScroll);
 
-// INITIAL STYLE
-revealElements.forEach(section => {
-    section.style.opacity = "0";
-    section.style.transform = "translateY(50px)";
-    section.style.transition = "all 0.8s ease";
+window.addEventListener("load", () => {
+
+    setTimeout(typeText, 800);
+
 });
